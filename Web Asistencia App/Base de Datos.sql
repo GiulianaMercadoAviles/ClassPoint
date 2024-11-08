@@ -192,6 +192,9 @@ INSERT INTO `alumnos` (`id`, `nombre`, `apellido`, `dni`, `fecha_nacimiento`) VA
 INSERT INTO `instituciones` (`id`, `nombre`, `direccion`, `cue`) VALUES
 	(1, 'Instituto Sedes Sapientiae', 'Primera Junta 75', 300154700);
 
+INSERT INTO `ram` (`nota_regular`, `nota_promocion`, `asistencia_regular`, `asistencia_promocion`, `institucion_id`) VALUES
+	(6, 7, 60, 70, 1);
+
 -- Volcando datos para la tabla web_asistencias_app.materias: ~1 rows (aproximadamente)
 INSERT INTO `materias` (`id`, `nombre`, `instituciones_id`, `departamento`, `curso`) VALUES
 	(1, 'Programación II', 1, 'Depto de Sistemas', '2do Año');
