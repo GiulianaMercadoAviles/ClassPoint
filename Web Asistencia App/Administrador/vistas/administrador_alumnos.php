@@ -13,7 +13,7 @@ $usuario_id = $_SESSION['usuario'];
 
 $usuario = Usuario::datos_usuario($conexion, $usuario_id);
 
-$consulta_alumnos = $conexion->prepare("SELECT * FROM alumnos");
+$consulta_alumnos = $conexion->prepare("SELECT * FROM alumnos INNER JOIN materias");
 
 $consulta_materia= Materia::Obtener_materias($conexion, $id_institucion);
 $consulta_materia->execute();
@@ -92,7 +92,7 @@ $materias = $consulta_materia->fetchAll(PDO::FETCH_ASSOC);
             $busqueda = isset($_GET['busqueda']) ? $_GET['busqueda'] : "";
 
             if (strlen($busqueda) > 3) {
-                $filtro = " AND (alumnos.nombre LIKE :busqueda OR alumnos.apellido LIKE :busqueda OR materias.nombre LIKE :busqueda OR materias.curso LIKE :busqueda OR materias.departamento LIKE :busqueda)";
+                $filtro = " WHERE alumnos.nombre LIKE :busqueda OR alumnos.apellido LIKE :busqueda OR materias.nombre LIKE :busqueda OR materias.curso LIKE :busqueda OR materias.departamento LIKE :busqueda";
             }
 
             if ($filtro) {
