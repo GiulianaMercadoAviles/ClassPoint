@@ -1,0 +1,6 @@
+Web de asistencias app
+
+Un sistema donde se ingrese con el usuario, que se pueda crear un alumno con los datos: nombre, apellido, dni, email y la fecha de nacimiento. para cada alumno se puede poner 3 calificaciones (parcial 1, 2 y  final) sacar el promedio de las notas, si es mayor o igual a 7 promociona, menor a 7 y mayor o igual a 6 regulariza, si es menor a 6 libre, tambien se tiene en cuanta el total de asistencias para promocion el 70%, para regular 60%
+se puede agregar profesores con los datos: nombre, apellido, dni, legajo.
+tomar asistencia y que la asistencia quede registrada
+seleccionar la materia (programacion 2 o 3) y la institucion que tiene nombre, direccion.

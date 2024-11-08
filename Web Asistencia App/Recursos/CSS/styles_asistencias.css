@@ -1,0 +1,353 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+body {
+    font-family: "Inter", sans-serif;
+    font-size: 90%;
+    margin: 0;
+    padding: 0;
+    background-color: #e7e7e7;
+    width: 100%;
+}
+.contenedor {
+    display: flex;
+    flex-grow: 1;
+    background-color: #f3f3f3;
+}
+
+.sidebar {
+    width: 220px;
+    height: 100vh;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    color: #000000;
+    flex-direction: column;
+    position:fixed;
+}
+
+.sidebar h1 {
+    font-size: 20px;
+    margin-top: 25px;
+    text-align: center;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    padding: 20px 10px;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 0.5rem;
+    padding: 10px;
+}
+
+.sidebar ul li:hover {
+    background-color: #f3cc56;
+}
+
+.sidebar ul li span {
+    margin-right: 10px;
+    margin-left: 7px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #000000;
+    font-size: 16px;
+}
+
+.sidebar .logout {
+    margin-top: auto;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.sidebar button:hover {
+    background-color: #f3cc56;
+    color: #000000;
+    border-color: #f3cc56;
+}
+
+.contenedor_principal {
+    flex-grow: 1;
+    background-color: #ffffff;
+    margin: 15px;
+    border-radius: 0.5rem;
+    margin-left: 17.5%;
+
+}
+
+.contenedor_principal h1 {
+    font-size: 36px;
+    font-weight:500;
+    color: #000000;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 7px 5px 2px ;
+    background-color: #ffffff;
+    color: #000000;
+    width: 99%;
+    border-radius: 0.5rem;
+}
+
+.header .usuario {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header .usuario span {
+    width: 40px;
+    margin-left: 10px;
+    color: #000000;
+}
+
+.header h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 30px;
+}
+
+.contenedor_listas {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 2px;
+}
+
+.contenedor_listas h3 {
+    margin: 10px 20px;
+    font-weight: 300;
+    font-size: 3vh;
+    margin-left: 45px;
+}
+.tarjeta {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    padding: 3px 10px;
+    width: 96%;
+    margin: 5px 20px;
+    border-radius: 0.5rem;
+}
+
+.tarjeta h1 {
+    font-weight:500;
+    margin-left: 20px;
+}
+
+.tarjeta img {
+    width: 130px;
+    margin-right: 15px;
+}
+
+.titulo {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    padding: 35px 0;
+    width: 95%;
+    margin: 10px 35px;
+    border-radius: 0.5rem;
+    background-color: #e7f3fd;
+}
+
+.titulo h1 {
+    font-weight:500;
+    margin-left: 20px;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.titulo_form {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    padding: 10px;
+    width: 96%;
+    margin: 10px 35px;
+    border-radius: 0.5rem;
+}
+
+.lista {
+    margin: 20px; 
+}
+
+.lista_div {
+    background-color: #ececec;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px 25px;
+    margin: 5px 25px;
+}
+
+.lista .linea {
+    height: 5px;
+    width: 100%;
+    border-radius: 0.5rem;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    background-color: #b0ddfa;
+}
+
+.div_tomar_asistencia_header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 20px;
+}
+
+.div_tomar_asistencia {
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    background-color: #FFFFFF;
+    border: 1px solid #a8a8a8;
+    padding: 7px 30px;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    margin: 7px;
+    display: flex;
+    align-items: center;
+    gap: 5%;
+}
+
+button:hover {
+    background-color: #f3cc56;
+    color: #000000;
+    border-color: #f3cc56;
+}
+
+img {
+    width: 25%;
+}
+
+.contenedor_imagen {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+nav {
+    margin: 15px 45px;
+    display: flex;
+    flex-direction: row;
+}
+
+.lista_check {
+    background-color: #FFFFFF;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.check {
+    background-color: #FFFFFF;
+    padding: 0 20px;
+}
+
+.div_tomar_asistencia .lista_registrar {
+    background-color: #FFFFFF;
+    border-radius: 0.7rem;
+    padding: 10px;
+}
+
+input{
+    background-color: #FFFFFF; 
+    border: 1px solid #a8a8a8; 
+    padding: 7px; 
+    margin: 7px 0;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    margin-right: 7px;
+}
+
+#tomar_asistencia {
+    margin: 10px;
+}
+
+.div_listado_asistencia {
+    border-radius: 0.5rem;
+}
+
+.div_listado_asistencia p {
+    padding: 10px 0;
+}
+
+.listado_asistencia_header {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    gap: 8px;
+}
+
+.lista_asistencia {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    gap: 1px;
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    padding: 10px;
+}
+
+.listado_inasistencia_header {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    gap: 8px;
+}
+
+.lista_inasistencia {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    gap: 1px;
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    padding: 10px;
+}
+
+.div_listado_inasistencia {
+    border-radius: 0.5rem;
+}
+
+.fecha {
+    margin: 5px 45px;
+}
+
+.boton_listado {
+    margin-left: 43px;
+}
+
+.listado_anterior {
+    display: flex;
+    flex-direction: column;
+
+}
+
+h2 {
+    margin-left: 45px;
+    color: #60bdfc;
+}
