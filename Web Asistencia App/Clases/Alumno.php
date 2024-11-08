@@ -190,9 +190,9 @@ class Alumno {
             $nota2 = $notas['parcial_2'];
             $final = $notas['final'];
             
-            if ($nota1 >= 7 && $nota2 >= 7 && $final >= 7) {
+            if ($nota1 >= $ram['nota_promocion'] && $nota2 >= $ram['nota_promocion'] && $final >= $ram['nota_promocion']) {
                 $estado = "Promoción";
-            } elseif ($nota1 >= 6 && $nota2 >= 6 && $final >= 6) {
+            } elseif ($nota1 >= $ram['nota_regular'] && $nota2 >= $ram['nota_regular'] && $final >= $ram['nota_regular']) {
                 $estado = "Regular";
             } else {
                 $estado = "Libre";
@@ -200,7 +200,7 @@ class Alumno {
 
             if ($estado == 'Promoción' && $asistencia < $ram['asistencia_regular']) {
                 $estado = 'Libre'; 
-            } else if ($estado == 'Promocion' && $asistencia < $ram['asistencia_promocion']) {
+            } else if ($estado == 'Promoción' && $asistencia < $ram['asistencia_promocion']) {
                 $estado = 'Regular'; 
             } else if ($estado == 'Regular' && $asistencia < $ram['asistencia_regular']) {
                 $estado = 'Libre'; 
