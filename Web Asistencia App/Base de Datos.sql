@@ -30,30 +30,17 @@ CREATE TABLE IF NOT EXISTS `alumnos` (
   UNIQUE KEY `dni` (`dni`)
 ) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla web_asistencias_app.alumnos: ~22 rows (aproximadamente)
-INSERT INTO `alumnos` (`id`, `nombre`, `apellido`, `dni`, `fecha_nacimiento`) VALUES
-	(1, 'Valentino', 'Andrade', '35123456', '1999-03-12'),
-	(2, 'Lucas', 'Cedres', '34876543', '1998-09-07'),
-	(3, 'Facundo', 'Figun', '40123789', '2000-11-25'),
-	(4, 'Luca', 'Giordano', '32456789', '1997-06-02'),
-	(5, 'Bruno', 'Godoy', '36789123', '1999-01-18'),
-	(6, 'Agustin', 'Gomez', '33567890', '1996-04-30'),
-	(7, 'Brian', 'Gonzalez', '35678901', '1997-12-05'),
-	(8, 'Federico', 'Guigou Scottini', '37890123', '1998-08-15'),
-	(9, 'Luna', 'Marrano', '38901234', '1999-03-10'),
-	(10, 'Giuliana', 'Mercado Aviles', '33345678', '1995-10-22'),
-	(11, 'Lucila', 'Mercado Ruiz', '32567890', '1996-12-08'),
-	(12, 'Angel', 'Murillo', '34890123', '1998-02-27'),
-	(13, 'Juan', 'Nissero', '36123456', '1999-07-17'),
-	(14, 'Fausto', 'Parada', '35234567', '1997-11-06'),
-	(15, 'Ignacio', 'Piter', '32789012', '1996-05-19'),
-	(16, 'Tomas', 'Planchon', '40456789', '2000-09-03'),
-	(17, 'Elisa', 'Ronconi', '31678123', '1995-01-24'),
-	(18, 'Exequiel', 'Sanchez', '33234567', '1998-04-11'),
-	(19, 'Melina', 'Schimpf Baldo', '33789456', '1996-10-09'),
-	(20, 'Diego', 'Segovia', '34567890', '1997-02-13'),
-	(21, 'Camila', 'Sittner', '36456789', '1999-08-20'),
-	(22, 'Yamil', 'Villa', '35345678', '1998-06-28');
+-- Volcando estructura para tabla web_asistencias_app.materias
+CREATE TABLE IF NOT EXISTS `materias` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `instituciones_id` int NOT NULL,
+  `departamento` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `curso` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_institucion` (`instituciones_id`) USING BTREE,
+  CONSTRAINT `materia_ibfk_1` FOREIGN KEY (`instituciones_id`) REFERENCES `instituciones` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Volcando estructura para tabla web_asistencias_app.asistencias
 CREATE TABLE IF NOT EXISTS `asistencias` (
@@ -81,26 +68,6 @@ CREATE TABLE IF NOT EXISTS `instituciones` (
   UNIQUE KEY `cue` (`cue`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla web_asistencias_app.instituciones: ~1 rows (aproximadamente)
-INSERT INTO `instituciones` (`id`, `nombre`, `direccion`, `cue`) VALUES
-	(1, 'Instituto Sedes Sapientiae', 'Primera Junta 75', 300154700);
-
--- Volcando estructura para tabla web_asistencias_app.materias
-CREATE TABLE IF NOT EXISTS `materias` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `instituciones_id` int NOT NULL,
-  `departamento` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `curso` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `id_institucion` (`instituciones_id`) USING BTREE,
-  CONSTRAINT `materia_ibfk_1` FOREIGN KEY (`instituciones_id`) REFERENCES `instituciones` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- Volcando datos para la tabla web_asistencias_app.materias: ~1 rows (aproximadamente)
-INSERT INTO `materias` (`id`, `nombre`, `instituciones_id`, `departamento`, `curso`) VALUES
-	(1, 'Programación II', 1, 'Depto de Sistemas', '2do Año');
-
 -- Volcando estructura para tabla web_asistencias_app.materia_alumno
 CREATE TABLE IF NOT EXISTS `materia_alumno` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -112,31 +79,6 @@ CREATE TABLE IF NOT EXISTS `materia_alumno` (
   CONSTRAINT `FK_materia_alumno_alumnos` FOREIGN KEY (`alumno_id`) REFERENCES `alumnos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_materia_alumno_materias` FOREIGN KEY (`materia_id`) REFERENCES `materias` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- Volcando datos para la tabla web_asistencias_app.materia_alumno: ~22 rows (aproximadamente)
-INSERT INTO `materia_alumno` (`id`, `materia_id`, `alumno_id`) VALUES
-	(1, 1, 22),
-	(2, 1, 21),
-	(3, 1, 20),
-	(4, 1, 19),
-	(5, 1, 18),
-	(6, 1, 17),
-	(7, 1, 16),
-	(8, 1, 15),
-	(9, 1, 14),
-	(10, 1, 13),
-	(11, 1, 12),
-	(12, 1, 11),
-	(13, 1, 10),
-	(14, 1, 9),
-	(15, 1, 8),
-	(16, 1, 7),
-	(17, 1, 6),
-	(18, 1, 5),
-	(19, 1, 4),
-	(20, 1, 3),
-	(21, 1, 2),
-	(22, 1, 1);
 
 -- Volcando estructura para tabla web_asistencias_app.notas
 CREATE TABLE IF NOT EXISTS `notas` (
@@ -152,31 +94,6 @@ CREATE TABLE IF NOT EXISTS `notas` (
   CONSTRAINT `FK_notas_alumnos` FOREIGN KEY (`alumno_id`) REFERENCES `alumnos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_notas_materias` FOREIGN KEY (`materia_id`) REFERENCES `materias` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- Volcando datos para la tabla web_asistencias_app.notas: ~22 rows (aproximadamente)
-INSERT INTO `notas` (`id`, `materia_id`, `alumno_id`, `parcial_1`, `parcial_2`, `final`) VALUES
-	(1, 1, 22, NULL, NULL, NULL),
-	(2, 1, 21, NULL, NULL, NULL),
-	(3, 1, 20, NULL, NULL, NULL),
-	(4, 1, 19, NULL, NULL, NULL),
-	(5, 1, 18, NULL, NULL, NULL),
-	(6, 1, 17, NULL, NULL, NULL),
-	(7, 1, 16, NULL, NULL, NULL),
-	(8, 1, 15, NULL, NULL, NULL),
-	(9, 1, 14, NULL, NULL, NULL),
-	(10, 1, 13, NULL, NULL, NULL),
-	(11, 1, 12, NULL, NULL, NULL),
-	(12, 1, 11, NULL, NULL, NULL),
-	(13, 1, 10, NULL, NULL, NULL),
-	(14, 1, 9, NULL, NULL, NULL),
-	(15, 1, 8, NULL, NULL, NULL),
-	(16, 1, 7, NULL, NULL, NULL),
-	(17, 1, 6, NULL, NULL, NULL),
-	(18, 1, 5, NULL, NULL, NULL),
-	(19, 1, 4, NULL, NULL, NULL),
-	(20, 1, 3, NULL, NULL, NULL),
-	(21, 1, 2, NULL, NULL, NULL),
-	(22, 1, 1, NULL, NULL, NULL);
 
 -- Volcando estructura para tabla web_asistencias_app.profesores
 CREATE TABLE IF NOT EXISTS `profesores` (
@@ -245,6 +162,89 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 -- Volcando datos para la tabla web_asistencias_app.usuarios: ~1 rows (aproximadamente)
 INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `email`, `contrasena`, `condicion`, `profesor_id`) VALUES
 	(1, 'Administrador', 'Admin', 'administrador@gmail.com', '$2y$10$MHpIYLjCAATzQsUg3I1wQuI6vBWv/Q38dVt7C3593mhiXcuulKA4W', 'administrador', NULL);
+
+-- Volcando datos para la tabla web_asistencias_app.alumnos: ~22 rows (aproximadamente)
+INSERT INTO `alumnos` (`id`, `nombre`, `apellido`, `dni`, `fecha_nacimiento`) VALUES
+	(1, 'Valentino', 'Andrade', '35123456', '1999-03-12'),
+	(2, 'Lucas', 'Cedres', '34876543', '1998-09-07'),
+	(3, 'Facundo', 'Figun', '40123789', '2000-11-25'),
+	(4, 'Luca', 'Giordano', '32456789', '1997-06-02'),
+	(5, 'Bruno', 'Godoy', '36789123', '1999-01-18'),
+	(6, 'Agustin', 'Gomez', '33567890', '1996-04-30'),
+	(7, 'Brian', 'Gonzalez', '35678901', '1997-12-05'),
+	(8, 'Federico', 'Guigou Scottini', '37890123', '1998-08-15'),
+	(9, 'Luna', 'Marrano', '38901234', '1999-03-10'),
+	(10, 'Giuliana', 'Mercado Aviles', '33345678', '1995-10-22'),
+	(11, 'Lucila', 'Mercado Ruiz', '32567890', '1996-12-08'),
+	(12, 'Angel', 'Murillo', '34890123', '1998-02-27'),
+	(13, 'Juan', 'Nissero', '36123456', '1999-07-17'),
+	(14, 'Fausto', 'Parada', '35234567', '1997-11-06'),
+	(15, 'Ignacio', 'Piter', '32789012', '1996-05-19'),
+	(16, 'Tomas', 'Planchon', '40456789', '2000-09-03'),
+	(17, 'Elisa', 'Ronconi', '31678123', '1995-01-24'),
+	(18, 'Exequiel', 'Sanchez', '33234567', '1998-04-11'),
+	(19, 'Melina', 'Schimpf Baldo', '33789456', '1996-10-09'),
+	(20, 'Diego', 'Segovia', '34567890', '1997-02-13'),
+	(21, 'Camila', 'Sittner', '36456789', '1999-08-20'),
+	(22, 'Yamil', 'Villa', '35345678', '1998-06-28');
+
+-- Volcando datos para la tabla web_asistencias_app.instituciones: ~1 rows (aproximadamente)
+INSERT INTO `instituciones` (`id`, `nombre`, `direccion`, `cue`) VALUES
+	(1, 'Instituto Sedes Sapientiae', 'Primera Junta 75', 300154700);
+
+-- Volcando datos para la tabla web_asistencias_app.materias: ~1 rows (aproximadamente)
+INSERT INTO `materias` (`id`, `nombre`, `instituciones_id`, `departamento`, `curso`) VALUES
+	(1, 'Programación II', 1, 'Depto de Sistemas', '2do Año');
+
+-- Volcando datos para la tabla web_asistencias_app.notas: ~22 rows (aproximadamente)
+INSERT INTO `notas` (`id`, `materia_id`, `alumno_id`, `parcial_1`, `parcial_2`, `final`) VALUES
+	(1, 1, 22, NULL, NULL, NULL),
+	(2, 1, 21, NULL, NULL, NULL),
+	(3, 1, 20, NULL, NULL, NULL),
+	(4, 1, 19, NULL, NULL, NULL),
+	(5, 1, 18, NULL, NULL, NULL),
+	(6, 1, 17, NULL, NULL, NULL),
+	(7, 1, 16, NULL, NULL, NULL),
+	(8, 1, 15, NULL, NULL, NULL),
+	(9, 1, 14, NULL, NULL, NULL),
+	(10, 1, 13, NULL, NULL, NULL),
+	(11, 1, 12, NULL, NULL, NULL),
+	(12, 1, 11, NULL, NULL, NULL),
+	(13, 1, 10, NULL, NULL, NULL),
+	(14, 1, 9, NULL, NULL, NULL),
+	(15, 1, 8, NULL, NULL, NULL),
+	(16, 1, 7, NULL, NULL, NULL),
+	(17, 1, 6, NULL, NULL, NULL),
+	(18, 1, 5, NULL, NULL, NULL),
+	(19, 1, 4, NULL, NULL, NULL),
+	(20, 1, 3, NULL, NULL, NULL),
+	(21, 1, 2, NULL, NULL, NULL),
+	(22, 1, 1, NULL, NULL, NULL);
+
+-- Volcando datos para la tabla web_asistencias_app.materia_alumno: ~22 rows (aproximadamente)
+INSERT INTO `materia_alumno` (`id`, `materia_id`, `alumno_id`) VALUES
+	(1, 1, 22),
+	(2, 1, 21),
+	(3, 1, 20),
+	(4, 1, 19),
+	(5, 1, 18),
+	(6, 1, 17),
+	(7, 1, 16),
+	(8, 1, 15),
+	(9, 1, 14),
+	(10, 1, 13),
+	(11, 1, 12),
+	(12, 1, 11),
+	(13, 1, 10),
+	(14, 1, 9),
+	(15, 1, 8),
+	(16, 1, 7),
+	(17, 1, 6),
+	(18, 1, 5),
+	(19, 1, 4),
+	(20, 1, 3),
+	(21, 1, 2),
+	(22, 1, 1);
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
