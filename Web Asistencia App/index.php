@@ -16,7 +16,11 @@
         <div class="usuario">
             <h1>CLASSPOINT</h1>
         </div>
-        <div></div>
+        <div class="importar">
+        <form action="importar_db.php" method="POST">
+            <button type="submit">Importar Base de Datos</button>
+        </form>
+        </div>
     </div>
     <section>
         <div class="contenedor_principal">
