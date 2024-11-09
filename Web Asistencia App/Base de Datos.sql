@@ -14,8 +14,7 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-
--- Volcando estructura de base de datos para web_asistencias_app
+-- Volcando estructura para tabla web_asistencias_app.alumnos
 CREATE DATABASE IF NOT EXISTS `web_asistencias_app` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `web_asistencias_app`;
 
@@ -29,6 +28,16 @@ CREATE TABLE IF NOT EXISTS `alumnos` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `dni` (`dni`)
 ) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Volcando estructura para tabla web_asistencias_app.instituciones
+CREATE TABLE IF NOT EXISTS `instituciones` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `direccion` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `cue` int NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `cue` (`cue`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Volcando estructura para tabla web_asistencias_app.materias
 CREATE TABLE IF NOT EXISTS `materias` (
@@ -56,17 +65,6 @@ CREATE TABLE IF NOT EXISTS `asistencias` (
   CONSTRAINT `FK__materias` FOREIGN KEY (`materia_id`) REFERENCES `materias` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla web_asistencias_app.asistencias: ~0 rows (aproximadamente)
-
--- Volcando estructura para tabla web_asistencias_app.instituciones
-CREATE TABLE IF NOT EXISTS `instituciones` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `direccion` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `cue` int NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `cue` (`cue`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Volcando estructura para tabla web_asistencias_app.materia_alumno
 CREATE TABLE IF NOT EXISTS `materia_alumno` (
@@ -110,8 +108,6 @@ CREATE TABLE IF NOT EXISTS `profesores` (
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla web_asistencias_app.profesores: ~0 rows (aproximadamente)
-
 -- Volcando estructura para tabla web_asistencias_app.profesor_institucion
 CREATE TABLE IF NOT EXISTS `profesor_institucion` (
   `profesor_institucion_id` int NOT NULL AUTO_INCREMENT,
@@ -127,8 +123,6 @@ CREATE TABLE IF NOT EXISTS `profesor_institucion` (
   CONSTRAINT `profesor_institucion_ibfk_3` FOREIGN KEY (`materia_id`) REFERENCES `materias` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla web_asistencias_app.profesor_institucion: ~0 rows (aproximadamente)
-
 -- Volcando estructura para tabla web_asistencias_app.ram
 CREATE TABLE IF NOT EXISTS `ram` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -141,8 +135,6 @@ CREATE TABLE IF NOT EXISTS `ram` (
   KEY `FK_ram_instituciones` (`institucion_id`),
   CONSTRAINT `FK_ram_instituciones` FOREIGN KEY (`institucion_id`) REFERENCES `instituciones` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- Volcando datos para la tabla web_asistencias_app.ram: ~0 rows (aproximadamente)
 
 -- Volcando estructura para tabla web_asistencias_app.usuarios
 CREATE TABLE IF NOT EXISTS `usuarios` (
